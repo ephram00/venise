@@ -1,0 +1,72 @@
+/* Enlève les marges par défaut du navigateur */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* La page occupe tout l'écran, sans barres de défilement */
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f4f5f7;          /* fond gris très clair, comme sur ton exemple */
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+/* La scène couvre tout l'écran. "position: relative" sert de repère
+   aux images, qui seront positionnées en "absolute" à l'intérieur. */
+#scene {
+  position: relative;
+  width: 100vw;                 /* vw = 1% de la largeur de la fenêtre */
+  height: 100vh;                /* vh = 1% de la hauteur de la fenêtre */
+}
+
+/* Chaque image ajoutée par le JS porte la classe "carte" */
+.carte {
+  position: absolute;           /* placée librement avec left/top (ici via transform) */
+  top: 0;
+  left: 0;
+  object-fit: cover;            /* l'image remplit son cadre sans être déformée */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  user-select: none;            /* empêche de sélectionner l'image */
+  -webkit-user-drag: none;      /* empêche de la "glisser" par erreur */
+  pointer-events: none;         /* la souris "traverse" les images : c'est le JS qui gère */
+  will-change: transform;       /* prévient le navigateur qu'on bouge souvent l'image (plus fluide) */
+  opacity: 0;                   /* invisible au départ... */
+  transition: opacity 0.4s;     /* ...puis apparaît en fondu */
+}
+
+/* Classe ajoutée par le JS quand l'image doit apparaître */
+.carte.visible {
+  opacity: 1;
+}
+
+/* Le compteur en bas à gauche */
+#compteur {
+  position: fixed;              /* reste fixe même si la page bouge */
+  left: 20px;
+  bottom: 16px;
+  font-size: 48px;
+  font-weight: 700;
+  color: #2a3f80;
+  z-index: 9999;                /* toujours au-dessus des images */
+  pointer-events: none;
+}
+
+/* Le message d'invitation, caché au départ */
+#consigne {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  font-size: 14px;
+  color: #2a3f80;
+  letter-spacing: 0.05em;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 1s;
+  pointer-events: none;
+}
+#consigne.visible {
+  opacity: 1;
+}

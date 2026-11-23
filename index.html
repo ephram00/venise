@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<!-- Indique au navigateur que c'est une page HTML5 -->
+<html lang="fr">
+<head>
+  <!-- Encodage : permet d'afficher correctement les accents -->
+  <meta charset="UTF-8">
+  <!-- Adapte la page à la largeur des écrans mobiles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les Toits De Venise Font Leurs Cinéma</title>
+  <!-- On relie le fichier de style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- La "scène" : le conteneur dans lequel JavaScript va ajouter les images -->
+  <main id="scene"></main>
+
+  <!-- Petit compteur affiché en bas à gauche (mis à jour par le JS) -->
+  <div id="compteur">0</div>
+
+  <!-- Message d'invitation, affiché quand toutes les images sont là -->
+  <div id="consigne">déplace ta souris pour les repousser</div>
+
+  <!-- On charge le script À LA FIN du body, une fois que la page existe -->
+  <script src="script.js"></script>
+</body>
+</html>
